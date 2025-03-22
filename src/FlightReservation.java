@@ -79,8 +79,9 @@ public class FlightReservation implements DisplayClass {
         int index = 0, ticketsToBeReturned;
         boolean isFound = false;
         for (Customer customer : Customer.customerCollection) {
-            if (userID.equals(customer.getUserID())) {
-                if (customer.getFlightsRegisteredByUser().size() != 0) {
+            String customerId = customer.getUserID();
+            if (userID.equals(customerId)) {
+                if (!customer.getFlightsRegisteredByUser().isEmpty()) {
                     System.out.printf("%50s %s Here is the list of all the Flights registered by you %s", " ", "++++++++++++++", "++++++++++++++");
                     displayFlightsRegisteredByOneUser(userID);
                     System.out.print("Enter the Flight Number of the Flight you want to cancel : ");
@@ -88,9 +89,8 @@ public class FlightReservation implements DisplayClass {
                     System.out.print("Enter the number of tickets to cancel : ");
                     int numOfTickets = read.nextInt();
                     Iterator<Flight> flightIterator = customer.getFlightsRegisteredByUser().iterator();
-                    while (flightIterator.hasNext()) {
-                        Flight flight = flightIterator.next();
-                        if (flightNum.equalsIgnoreCase(flight.getFlightNumber())) {
+                    for (Flight f1 : customer.getFlightsRegisteredByUser()) {
+                        if (flightNum.equalsIgnoreCase(f1.getFlightNumber())) {
                             isFound = true;
                             int numOfTicketsForFlight = customer.getNumOfTicketsBookedByUser().get(index);
                             while (numOfTickets > numOfTicketsForFlight) {
@@ -98,14 +98,14 @@ public class FlightReservation implements DisplayClass {
                                 numOfTickets = read.nextInt();
                             }
                             if (numOfTicketsForFlight == numOfTickets) {
-                                ticketsToBeReturned = flight.getNoOfSeats() + numOfTicketsForFlight;
-                                customer.numOfTicketsBookedByUser.remove(index);
+                                ticketsToBeReturned = f1.getNoOfSeats() + numOfTicketsForFlight;
+                                customer.removeNumOfTicketsBookedByUser(index);
                                 flightIterator.remove();
                             } else {
-                                ticketsToBeReturned = numOfTickets + flight.getNoOfSeats();
-                                customer.numOfTicketsBookedByUser.set(index, (numOfTicketsForFlight - numOfTickets));
+                                ticketsToBeReturned = numOfTickets + f1.getNoOfSeats();
+                                customer.setNumOfTicketsBookedByUser(index, (numOfTicketsForFlight - numOfTickets));
                             }
-                            flight.setNoOfSeatsInTheFlight(ticketsToBeReturned);
+                            f1.setNoOfSeatsInTheFlight(ticketsToBeReturned);
                             break;
                         }
                         index++;
@@ -114,7 +114,6 @@ public class FlightReservation implements DisplayClass {
                 }else{
                     System.out.println("No Flight Has been Registered by you with ID \"\"" + flightNum.toUpperCase() +"\"\".....");
                 }
-//                index++;
                 if (!isFound) {
                     System.out.println("ERROR!!! Couldn't find Flight with ID \"" + flightNum.toUpperCase() + "\".....");
                 }

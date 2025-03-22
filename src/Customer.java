@@ -308,6 +308,14 @@ public class Customer {
         return Collections.unmodifiableList(numOfTicketsBookedByUser);
     }
 
+    public void removeNumOfTicketsBookedByUser(int index){
+        numOfTicketsBookedByUser.remove(index);
+    }
+
+    public void setNumOfTicketsBookedByUser(int index, int numOfTickets) {
+        numOfTicketsBookedByUser.set(index, numOfTickets);
+    }
+
     public void setName(String name) {
         this.name = name;
     }

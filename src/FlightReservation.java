@@ -201,7 +201,7 @@ public class FlightReservation implements DisplayClass {
         System.out.printf("%10s+------------+------------+----------------------------------+---------+-----------------------------+-------------------------------------+-------------------------+----------------+\n", "");
         int size = flight.getListOfRegisteredCustomersInAFlight().size();
         for (int i = 0; i < size; i++) {
-            System.out.println(toString(i, c.get(i), flightIndex(c.get(i).flightsRegisteredByUser, flight)));
+            System.out.println(toString(i, c.get(i), flightIndex(c.get(i).getFlightsRegisteredByUser(), flight)));
             System.out.printf("%10s+------------+------------+----------------------------------+---------+-----------------------------+-------------------------------------+-------------------------+----------------+\n", "");
         }
     }

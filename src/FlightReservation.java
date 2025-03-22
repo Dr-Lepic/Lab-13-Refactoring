@@ -134,7 +134,9 @@ public class FlightReservation implements DisplayClass {
     boolean isFlightAlreadyAddedToCustomerList(List<Flight> flightList, Flight flight) {
         boolean addedOrNot = false;
         for (Flight flight1 : flightList) {
-            if (flight1.getFlightNumber().equalsIgnoreCase(flight.getFlightNumber())) {
+            String flightNum = flight1.getFlightNumber();
+            boolean flightFound = flightNum.equalsIgnoreCase(flight.getFlightNumber());
+            if (flightFound) {
                 this.flightIndexInFlightList = flightList.indexOf(flight1);
                 addedOrNot = true;
                 break;

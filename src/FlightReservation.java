@@ -148,7 +148,9 @@ public class FlightReservation implements DisplayClass {
     String flightStatus(Flight flight) {
         boolean isFlightAvailable = false;
         for (Flight list : flight.getFlightList()) {
-            if (list.getFlightNumber().equalsIgnoreCase(flight.getFlightNumber())) {
+            String flightNum = list.getFlightNumber();
+            boolean flightFound = flightNum.equalsIgnoreCase(flight.getFlightNumber());
+            if (flightFound) {
                 isFlightAvailable = true;
                 break;
             }

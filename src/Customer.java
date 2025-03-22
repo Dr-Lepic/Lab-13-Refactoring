@@ -273,7 +273,7 @@ public class Customer {
     // Getters ************************************************************
 
     public List<Flight> getFlightsRegisteredByUser() {
-        return flightsRegisteredByUser;
+        return Collections.unmodifiableList(flightsRegisteredByUser);
     }
 
     public String getPassword() {
@@ -305,7 +305,7 @@ public class Customer {
     }
 
     public List<Integer> getNumOfTicketsBookedByUser() {
-        return numOfTicketsBookedByUser;
+        return Collections.unmodifiableList(numOfTicketsBookedByUser);
     }
 
     public void setName(String name) {

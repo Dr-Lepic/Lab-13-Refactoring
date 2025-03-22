@@ -5,6 +5,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -381,6 +382,6 @@ public class User {
     // Getters ************************************************************
 
     public static List<Customer> getCustomersCollection() {
-        return customersCollection;
+        return Collections.unmodifiableList(customersCollection);
     }
 }

@@ -304,7 +304,7 @@ public class Flight extends FlightDistance {
     }
 
     public List<Customer> getListOfRegisteredCustomersInAFlight() {
-        return listOfRegisteredCustomersInAFlight;
+        return Collections.unmodifiableList(listOfRegisteredCustomersInAFlight);
     }
 
     public String getFlightSchedule() {

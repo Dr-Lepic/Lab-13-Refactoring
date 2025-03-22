@@ -31,18 +31,25 @@ public class FlightReservation implements DisplayClass {
     void bookFlight(String flightNo, int numOfTickets, String userID) {
         boolean isFound = false;
         for (Flight f1 : flight.getFlightList()) {
-            if (flightNo.equalsIgnoreCase(f1.getFlightNumber())) {
+            String flightNumber = f1.getFlightNumber();
+            boolean flightFound = flightNo.equalsIgnoreCase(flightNumber);
+            if (flightFound) {
                 for (Customer customer : Customer.customerCollection) {
-                    if (userID.equals(customer.getUserID())) {
+                    String customerId = customer.getUserID();
+                    if (userID.equals(customerId)) {
                         isFound = true;
-                        f1.setNoOfSeatsInTheFlight(f1.getNoOfSeats() - numOfTickets);
-                        if (!f1.isCustomerAlreadyAdded(f1.getListOfRegisteredCustomersInAFlight(), customer)) {
+                        int numOfSeatsLeft = f1.getNoOfSeats() - numOfTickets;
+                        f1.setNoOfSeatsInTheFlight(numOfSeatsLeft);
+                        List<Customer> customerList = f1.getListOfRegisteredCustomersInAFlight();
+                        if (!f1.isCustomerAlreadyAdded(customerList, customer)) {
                             f1.addNewCustomerToFlight(customer);
                         }
-                        if (isFlightAlreadyAddedToCustomerList(customer.flightsRegisteredByUser, f1)) {
+                        if (isFlightAlreadyAddedToCustomerList(customer.getFlightsRegisteredByUser(), f1)) {
                             addNumberOfTicketsToAlreadyBookedFlight(customer, numOfTickets);
                             if (flightIndex(flight.getFlightList(), flight) != -1) {
-                                customer.addExistingFlightToCustomerList(flightIndex(flight.getFlightList(), flight), numOfTickets);
+                                List<Flight> flightList = flight.getFlightList();
+                                int flightIndex = flightIndex(flightList, flight);
+                                customer.addExistingFlightToCustomerList(flightIndex, numOfTickets);
                             }
                         } else {
                             customer.addNewFlightToCustomerList(f1);

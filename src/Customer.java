@@ -315,6 +315,9 @@ public class Customer {
     public void setNumOfTicketsBookedByUser(int index, int numOfTickets) {
         numOfTicketsBookedByUser.set(index, numOfTickets);
     }
+    public void addNumOfTicketsBookedByUser(int numOfTickets) {
+        numOfTicketsBookedByUser.add(numOfTickets);
+    }
 
     public void setName(String name) {
         this.name = name;

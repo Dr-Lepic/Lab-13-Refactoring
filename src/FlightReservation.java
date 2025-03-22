@@ -176,7 +176,8 @@ public class FlightReservation implements DisplayClass {
         for (Customer customer : Customer.customerCollection) {
             List<Flight> f = customer.getFlightsRegisteredByUser();
             int size = customer.getFlightsRegisteredByUser().size();
-            if (userID.equals(customer.getUserID())) {
+            boolean found = userID.equals(customer.getUserID());
+            if (found) {
                 for (int i = 0; i < size; i++) {
                     System.out.println(toString((i + 1), f.get(i), customer));
                     System.out.print("+------+-------------------------------------------+-----------+------------------+-----------------------+------------------------+---------------------------+-------------+--------+-----------------+\n");

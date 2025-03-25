@@ -82,7 +82,7 @@ public class Customer {
         String address = read.nextLine();
         System.out.print("Enter your age :\t");
         int age = read.nextInt();
-        customerCollection.add(new Customer(name, email, password, phone, address, age));
+        addCustomerToCustomerCollection(new Customer(name, email, password, phone, address, age));
     }
 
     /**
@@ -320,6 +320,9 @@ public class Customer {
     }
     public static List<Customer> getCustomersCollection() {
         return Collections.unmodifiableList(customerCollection);
+    }
+    public void addCustomerToCustomerCollection(Customer customer) {
+        customerCollection.add(customer);
     }
 
     public void setName(String name) {

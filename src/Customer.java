@@ -11,8 +11,8 @@ public class Customer {
     private final String password;
     private String address;
     private int age;
-    public List<Flight> flightsRegisteredByUser;
-    public List<Integer> numOfTicketsBookedByUser;
+    private List<Flight> flightsRegisteredByUser;
+    private List<Integer> numOfTicketsBookedByUser;
     public static final List<Customer> customerCollection = new ArrayList<>();
 
     // ************************************************************
@@ -309,6 +309,9 @@ public class Customer {
 
     public List<Integer> getNumOfTicketsBookedByUser() {
         return Collections.unmodifiableList(numOfTicketsBookedByUser);
+    }
+    public int getNumOfTickets(int index) {
+        return numOfTicketsBookedByUser.get(index);
     }
 
     public void removeNumOfTicketsBookedByUser(int index){

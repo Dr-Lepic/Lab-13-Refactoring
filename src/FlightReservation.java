@@ -122,7 +122,7 @@ public class FlightReservation implements DisplayClass {
     }
 
     void addNumberOfTicketsToAlreadyBookedFlight(Customer customer, int numOfTickets) {
-        int numOfTicketsBookedByCustomer = customer.numOfTicketsBookedByUser.get(flightIndexInFlightList);
+        int numOfTicketsBookedByCustomer = customer.getNumOfTickets(flightIndexInFlightList);
         int newNumOfTickets = numOfTicketsBookedByCustomer + numOfTickets;
         customer.setNumOfTicketsBookedByUser(flightIndexInFlightList, newNumOfTickets);
     }
@@ -164,7 +164,7 @@ public class FlightReservation implements DisplayClass {
 
     /*toString() Method for displaying number of flights registered by single user...*/
     public String toString(int serialNum, Flight flights, Customer customer) {
-        return String.format("| %-5d| %-41s | %-9s | \t%-9d | %-21s | %-22s | %-10s  |   %-6sHrs |  %-4s  | %-10s |", serialNum, flights.getFlightSchedule(), flights.getFlightNumber(), customer.numOfTicketsBookedByUser.get(serialNum - 1), flights.getFromWhichCity(), flights.getToWhichCity(), flights.fetchArrivalTime(), flights.getFlightTime(), flights.getGate(), flightStatus(flights));
+        return String.format("| %-5d| %-41s | %-9s | \t%-9d | %-21s | %-22s | %-10s  |   %-6sHrs |  %-4s  | %-10s |", serialNum, flights.getFlightSchedule(), flights.getFlightNumber(), customer.getNumOfTickets(serialNum - 1), flights.getFromWhichCity(), flights.getToWhichCity(), flights.fetchArrivalTime(), flights.getFlightTime(), flights.getGate(), flightStatus(flights));
     }
 
     @Override
@@ -190,7 +190,7 @@ public class FlightReservation implements DisplayClass {
 
     public String toString(int serialNum, Customer customer, int index) {
         return String.format("%10s| %-10d | %-10s | %-32s | %-7s | %-27s | %-35s | %-23s |       %-7s  |", "", (serialNum + 1), customer.randomIDDisplay(customer.getUserID()), customer.getName(),
-                customer.getAge(), customer.getEmail(), customer.getAddress(), customer.getPhone(), customer.numOfTicketsBookedByUser.get(index));
+                customer.getAge(), customer.getEmail(), customer.getAddress(), customer.getPhone(), customer.getNumOfTickets(index));
     }
 
     @Override

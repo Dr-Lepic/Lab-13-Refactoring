@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class RolesAndPermissions extends User {
     //        ************************************************************ Behaviours/Methods ************************************************************
 
@@ -28,7 +30,8 @@ public class RolesAndPermissions extends User {
      */
     public String isPassengerRegistered(String email, String password) {
         String isFound = "0";
-        for (Customer c : Customer.customerCollection) {
+        List<Customer> customerList = Customer.getCustomersCollection();
+        for (Customer c : customerList) {
             if (email.equals(c.getEmail())) {
                 if (password.equals(c.getPassword())) {
                     isFound = "1-" + c.getUserID();

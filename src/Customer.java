@@ -134,7 +134,8 @@ public class Customer {
      */
     public boolean isUniqueData(String emailID) {
         boolean isUnique = false;
-        for (Customer c : customerCollection) {
+        List<Customer> customerList = getCustomersCollection();
+        for (Customer c : customerList) {
             if (emailID.equals(c.getEmail())) {
                 isUnique = true;
                 break;

@@ -199,7 +199,7 @@ public class Customer {
      */
     public void displayCustomersData(boolean showHeader) {
         displayHeader();
-        Iterator<Customer> iterator = customerCollection.iterator();
+        Iterator<Customer> iterator = getCustomersCollection().iterator();
         int i = 0;
         while (iterator.hasNext()) {
             i++;

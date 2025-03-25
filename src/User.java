@@ -24,6 +24,10 @@ public class User {
     // Behaviours/Methods
     // ************************************************************
 
+    private static void setDefaultAdminUserNameAndPassword() {
+        adminUserNameAndPassword[0][0] = "root";
+        adminUserNameAndPassword[0][1] = "root";
+    }
     public static void main(String[] args) {
         int countNumOfUsers = 1;
         RolesAndPermissions r1 = new RolesAndPermissions();
@@ -58,9 +62,8 @@ public class User {
             if (desiredOption == 1) {
 
                 /* Default username and password.... */
-                adminUserNameAndPassword[0][0] = "root";
-                adminUserNameAndPassword[0][1] = "root";
-                
+                setDefaultAdminUserNameAndPassword();
+
                 System.out.print("\nEnter the UserName to login to the Management System :     ");
                 String username = read1.nextLine();
                 System.out.print("Enter the Password to login to the Management System :    ");

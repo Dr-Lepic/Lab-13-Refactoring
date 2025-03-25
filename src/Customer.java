@@ -147,7 +147,8 @@ public class Customer {
     public void editUserInfo(String ID) {
         boolean isFound = false;
         Scanner read = new Scanner(System.in);
-        for (Customer c : customerCollection) {
+        List<Customer> customerList = getCustomersCollection();
+        for (Customer c : customerList) {
             if (ID.equals(c.getUserID())) {
                 isFound = true;
                 System.out.print("\nEnter the new name of the Passenger:\t");

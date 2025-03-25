@@ -327,6 +327,9 @@ public class Customer {
     public void addCustomerToCustomerCollection(Customer customer) {
         customerCollection.add(customer);
     }
+    public void addFlightsRegisteredByUser(Flight f) {
+        flightsRegisteredByUser.add(f);
+    }
 
     public void setName(String name) {
         this.name = name;

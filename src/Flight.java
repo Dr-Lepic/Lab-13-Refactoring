@@ -85,7 +85,7 @@ public class Flight extends FlightDistance {
     }
 
     /**
-     * Adds numOfTickets to existing customer's tickets for the this flight.
+     * Adds numOfTickets to existing customer's tickets for the flight.
      *
      * @param customer     customer in which tickets are to be added
      * @param numOfTickets number of tickets to add
@@ -173,7 +173,7 @@ public class Flight extends FlightDistance {
 
     void deleteFlight(String flightNumber) {
         boolean isFound = false;
-        Iterator<Flight> list = flightList.iterator();
+        Iterator<Flight> list = getFlightList().iterator();
         while (list.hasNext()) {
             Flight flight = list.next();
             if (flight.getFlightNumber().equalsIgnoreCase(flightNumber)) {
@@ -217,7 +217,7 @@ public class Flight extends FlightDistance {
 
     public void displayFlightSchedule() {
 
-        Iterator<Flight> flightIterator = flightList.iterator();
+        Iterator<Flight> flightIterator = getFlightList().iterator();
         System.out.println();
         System.out.print("+------+-------------------------------------------+-----------+------------------+-----------------------+------------------------+---------------------------+-------------+--------+------------------------+\n");
         System.out.printf("| Num  | FLIGHT SCHEDULE\t\t\t   | FLIGHT NO | Available Seats  | \tFROM ====>>       | \t====>> TO\t   | \t    ARRIVAL TIME       | FLIGHT TIME |  GATE  |   DISTANCE(MILES/KMS)  |%n");

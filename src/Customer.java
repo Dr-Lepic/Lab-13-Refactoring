@@ -173,7 +173,7 @@ public class Customer {
 
     public void deleteUser(String ID) {
         boolean isFound = false;
-        Iterator<Customer> iterator = customerCollection.iterator();
+        Iterator<Customer> iterator = getCustomersCollection().iterator();
         while (iterator.hasNext()) {
             Customer customer = iterator.next();
             if (ID.equals(customer.getUserID())) {

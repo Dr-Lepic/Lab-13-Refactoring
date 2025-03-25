@@ -106,8 +106,9 @@ public class Customer {
      */
     public void searchUser(String ID) {
         boolean isFound = false;
-        Customer customerWithTheID = customerCollection.get(0);
-        for (Customer c : customerCollection) {
+        Customer customerWithTheID = getCustomersCollection().getFirst();
+        List<Customer> customerList = getCustomersCollection();
+        for (Customer c : customerList) {
             if (ID.equals(c.getUserID())) {
                 System.out.printf("%-50sCustomer Found...!!!Here is the Full Record...!!!\n\n\n", " ");
                 displayHeader();

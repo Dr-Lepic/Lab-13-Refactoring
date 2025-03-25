@@ -128,7 +128,7 @@ public class User {
                             c1.displayCustomersData(false);
                             System.out.print("Enter the CustomerID to Update its Data :\t");
                             String customerID = read1.nextLine();
-                            if (Customer.customerCollection.size() > 0) {
+                            if (!Customer.getCustomersCollection().isEmpty()) {
                                 c1.editUserInfo(customerID);
                             } else {
                                 System.out.printf("%-50sNo Customer with the ID %s Found...!!!\n", " ", customerID);
@@ -142,7 +142,7 @@ public class User {
                             c1.displayCustomersData(false);
                             System.out.print("Enter the CustomerID to Delete its Data :\t");
                             String customerID = read1.nextLine();
-                            if (Customer.customerCollection.size() > 0) {
+                            if (!Customer.getCustomersCollection().isEmpty()) {
                                 c1.deleteUser(customerID);
                             } else {
                                 System.out.printf("%-50sNo Customer with the ID %s Found...!!!\n", " ", customerID);

@@ -9,7 +9,7 @@ public class RolesAndPermissions extends User {
      * @param password of the imaginary admin
      * @return -1 if admin not found, else index of the admin in the array.
      */
-    public int isPrivilegedUserOrNot(String username, String password) {
+    public int validateAdmin(String username, String password) {
         int isFound = -1;
         for (int i = 0; i < adminUserNameAndPassword.length; i++) {
             if (username.equals(adminUserNameAndPassword[i][0])) {
@@ -28,7 +28,7 @@ public class RolesAndPermissions extends User {
      * @param password of the specified passenger
      * @return 1 with the userID if the passenger is registered, else 0
      */
-    public String isPassengerRegistered(String email, String password) {
+    public String validatePassenger(String email, String password) {
         String isFound = "0";
         List<Customer> customerList = Customer.getCustomersCollection();
         for (Customer c : customerList) {

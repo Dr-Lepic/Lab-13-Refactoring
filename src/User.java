@@ -4,9 +4,6 @@
  *
  */
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 public class User {
@@ -71,11 +68,11 @@ public class User {
                 System.out.println();
 
                 /* Checking the RolesAndPermissions...... */
-                if (r1.isPrivilegedUserOrNot(username, password) == -1) {
+                if (r1.validateAdmin(username, password) == -1) {
                     System.out.printf(
                             "\n%20sERROR!!! Unable to login Cannot find user with the entered credentials.... Try Creating New Credentials or get yourself register by pressing 4....\n",
                             "");
-                } else if (r1.isPrivilegedUserOrNot(username, password) == 0) {
+                } else if (r1.validateAdmin(username, password) == 0) {
                     System.out.println(
                             "You've standard/default privileges to access the data... You can just view customers data..."
                                     + "Can't perform any actions on them....");
@@ -205,7 +202,7 @@ public class User {
                 String username = read1.nextLine();
                 System.out.print("Enter the Password to Register :     ");
                 String password = read1.nextLine();
-                while (r1.isPrivilegedUserOrNot(username, password) != -1) {
+                while (r1.validateAdmin(username, password) != -1) {
                     System.out.print("ERROR!!! Admin with same UserName already exist. Enter new UserName:   ");
                     username = read1.nextLine();
                     System.out.print("Enter the Password Again:   ");
@@ -223,7 +220,7 @@ public class User {
                 String userName = read1.nextLine();
                 System.out.print("Enter the Password : \t");
                 String password = read1.nextLine();
-                String[] result = r1.isPassengerRegistered(userName, password).split("-");
+                String[] result = r1.validatePassenger(userName, password).split("-");
 
                 if (Integer.parseInt(result[0]) == 1) {
                     int desiredChoice;

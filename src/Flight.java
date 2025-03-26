@@ -8,7 +8,7 @@ import java.util.*;
 public class Flight extends FlightDistance {
 
     //        ************************************************************ Fields ************************************************************
-
+    private static final double GROUND_SPEED = 450;
     private final String flightSchedule;
     private final String flightNumber;
     private final String fromWhichCity;
@@ -119,8 +119,7 @@ public class Flight extends FlightDistance {
      * @return formatted flight time
      */
     public String calculateFlightTime(double distanceBetweenTheCities) {
-        double groundSpeed = 450;
-        double time = (distanceBetweenTheCities / groundSpeed);
+        double time = (distanceBetweenTheCities / GROUND_SPEED);
         String timeInString = String.format("%.4s", time);
         String[] timeArray = timeInString.replace('.', ':').split(":");
         int hours = Integer.parseInt(timeArray[0]);

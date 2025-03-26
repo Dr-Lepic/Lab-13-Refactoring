@@ -156,51 +156,8 @@ public class User {
                         System.out.printf("%-40s (g) Enter 0 to Go back to the Main Menu/Logout....\n", "");
                         System.out.print("Enter the desired Choice :   ");
                         desiredChoice = read.nextInt();
-                        if (desiredChoice == 1) {
-                            // bookingAndReserving.displayArtWork(1);
-                            f1.displayFlightSchedule();
-                            System.out.print("\nEnter the desired flight number to book :\t ");
-                            String flightToBeBooked = read1.nextLine();
-                            System.out.print("Enter the Number of tickets for " + flightToBeBooked + " flight :   ");
-                            int numOfTickets = read.nextInt();
-                            while (numOfTickets > 10) {
-                                System.out.print(
-                                        "ERROR!! You can't book more than 10 tickets at a time for single flight....Enter number of tickets again : ");
-                                numOfTickets = read.nextInt();
-                            }
-                            bookingAndReserving.bookFlight(flightToBeBooked, numOfTickets, result[1]);
-                        } else if (desiredChoice == 2) {
 
-                            c1.editUserInfo(result[1]);
-                        } else if (desiredChoice == 3) {
-                            System.out.print(
-                                    "Are you sure to delete your account...It's an irreversible action...Enter Y/y to confirm...");
-                            char confirmationChar = read1.nextLine().charAt(0);
-                            if (confirmationChar == 'Y' || confirmationChar == 'y') {
-                                c1.deleteUser(result[1]);
-                                System.out.printf("User %s's account deleted Successfully...!!!", userName);
-                                desiredChoice = 0;
-                            } else {
-                                System.out.println("Action has been cancelled...");
-                            }
-                        } else if (desiredChoice == 4) {
-
-                            f1.displayFlightSchedule();
-                            f1.displayMeasurementInstructions();
-                        } else if (desiredChoice == 5) {
-
-                            bookingAndReserving.cancelFlight(result[1]);
-                        } else if (desiredChoice == 6) {
-
-                            bookingAndReserving.displayFlightsRegisteredByOneUser(result[1]);
-                        } else {
-
-                            if (desiredChoice != 0) {
-                                System.out.println(
-                                        "Invalid Choice...Looks like you're Robot...Entering values randomly...You've Have to login again...");
-                            }
-                            desiredChoice = 0;
-                        }
+                        MenuController.PassengerMenuChoice(desiredChoice, result[1]);
                     } while (desiredChoice != 0);
 
                 } else {

@@ -131,17 +131,7 @@ public class User {
                             "\n\n%-20sLogged in Successfully as \"%s\"..... For further Proceedings, enter a value from below....",
                             "", userName);
                     do {
-                        System.out.printf("\n\n%-60s+++++++++ 3rd Layer Menu +++++++++%50sLogged in as \"%s\"\n", "",
-                                "", userName);
-                        System.out.printf("%-40s (a) Enter 1 to Book a flight....\n", "");
-                        System.out.printf("%-40s (b) Enter 2 to update your Data....\n", "");
-                        System.out.printf("%-40s (c) Enter 3 to delete your account....\n", "");
-                        System.out.printf("%-40s (d) Enter 4 to Display Flight Schedule....\n", "");
-                        System.out.printf("%-40s (e) Enter 5 to Cancel a Flight....\n", "");
-                        System.out.printf("%-40s (f) Enter 6 to Display all flights registered by \"%s\"....\n", "",
-                                userName);
-                        System.out.printf("%-40s (g) Enter 0 to Go back to the Main Menu/Logout....\n", "");
-                        System.out.print("Enter the desired Choice :   ");
+                        MenuController.showPassengerMenuInfo(userName);
                         desiredChoice = read.nextInt();
 
                         MenuController.PassengerMenuChoice(desiredChoice, result[1]);
